@@ -179,11 +179,21 @@ app.get('/api/portfolio/ai-insights', async (req, res) => {
       });
 
       if (!response.ok) {
-        throw new Error(`OpenAI API error: ${response.status}`);
+        if (response.status === 429) {
+          console.log('OpenAI rate limit reached, using heuristic fallback');
+          // Fall back to heuristic instead of throwing error
+        } else {
+          throw new Error(`OpenAI API error: ${response.status}`);
+        }
       }
-      const data = await response.json();
-      const content = data?.choices?.[0]?.message?.content || 'No insights generated.';
-      return res.json({ source: 'openai', insights: content });
+      
+      if (response.status === 429) {
+        // Use heuristic fallback for rate limit
+      } else {
+        const data = await response.json();
+        const content = data?.choices?.[0]?.message?.content || 'No insights generated.';
+        return res.json({ source: 'openai', insights: content });
+      }
     }
 
     // Heuristic fallback (no external API key required)

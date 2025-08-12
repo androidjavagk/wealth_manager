@@ -2,6 +2,12 @@
 
 A comprehensive portfolio analytics dashboard that gives investors a complete view of their investment portfolio. Built with React.js frontend and Node.js/Express backend.
 
+## 🌐 Live Demo
+
+**🔗 [View Live Application](https://wealth-manager-2.onrender.com/)**
+
+Experience the full portfolio analytics dashboard with interactive charts, real-time data, and responsive design.
+
 ## ✨ Features
 
 ### 📈 Portfolio Overview

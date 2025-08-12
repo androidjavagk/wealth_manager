@@ -53,7 +53,7 @@ function App() {
       setError(null);
 
       const baseURL = process.env.NODE_ENV === 'production' 
-        ? 'https://your-vercel-app.vercel.app' 
+        ? 'https://your-render-app.onrender.com' 
         : 'http://localhost:5000';
 
       const [holdingsRes, allocationRes, performanceRes, summaryRes, insightsRes] = await Promise.all([
